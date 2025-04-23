@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 50px);
+  grid-template-rows: repeat(10, 50px);
+  background-color: #fffea5;
+  padding: 10px;
+  border-radius: 8px;
+  border-color: antiquewhite;
+  gap: 2px;
+  width: fit-content;
+}
+
+.square-odd,
+.square-even {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.square-odd {
+  background-color: #c2ffc1;
+  border-color: black;
+}
+
+.square-even {
+  background-color: #ff7575;
+  border-color: black;
+}
