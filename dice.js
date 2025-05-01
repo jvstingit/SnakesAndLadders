@@ -1,4 +1,5 @@
 const dice = document.getElementById('dice');
+const rollButton = document.getElementById('rollButton');
 const result = document.getElementById('result');
 const dots = [...document.querySelectorAll('.dot')];
 
@@ -18,7 +19,6 @@ function rollDice() {
   result.textContent = `You rolled a ${roll}`;
 }
 
-dice.addEventListener('click', rollDice);
+rollButton.addEventListener('click', rollDice);
 
-// Roll once on load
 rollDice();
