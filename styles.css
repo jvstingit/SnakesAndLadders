@@ -11,7 +11,7 @@ body {
   display: grid;
   grid-template-columns: repeat(10, 50px);
   grid-template-rows: repeat(10, 50px);
-  background-color: #fffea5;
+  background-color: black;
   padding: 10px;
   border-radius: 8px;
   border-color: antiquewhite;
@@ -24,14 +24,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #fffcc4;
 }
 
 .square-odd {
-  background-color: #c2ffc1;
+  background-color: #161179;
   border-color: black;
 }
 
 .square-even {
-  background-color: #ff7575;
+  background-color: #292359;
   border-color: black;
 }
