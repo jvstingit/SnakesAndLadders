@@ -1,0 +1,136 @@
+body {
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  h1 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .game-board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 2px;
+    width: 500px;
+    height: 500px;
+    background-color: #ddd;
+    border: 2px solid #333;
+  }
+  
+  .tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    font-weight: bold;
+    position: relative;
+  }
+  
+  .tile.green {
+    background-color: #a5d6a7;
+  }
+  
+  .tile.red {
+    background-color: #ef9a9a;
+  }
+  
+  .player {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: blue;
+    position: absolute;
+    z-index: 10;
+  }
+  
+  .game-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .dice {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    padding: 10px;
+  }
+  
+  .dot {
+    width: 15px;
+    height: 15px;
+    background: black;
+    border-radius: 50%;
+    align-self: center;
+    justify-self: center;
+    opacity: 0;
+  }
+  
+  .visible {
+    opacity: 1;
+  }
+  
+  #result, #position {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
+  #rollButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #rollButton:hover {
+    background-color: #45a049;
+  }
+  
+  /* Snake and ladder indicators */
+  .tile .effect {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+  }
+  
+  .tile.green .effect {
+    background-color: green;
+  }
+  
+  .tile.red .effect {
+    background-color: red;
+  }

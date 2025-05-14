@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snakes and Ladders</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>Snakes and Ladders</h1>
+      
+      <div class="game-info">
+        <div id="current-player">Current Player: <span id="player-name">Donald</span></div>
+        <div class="dice" id="dice">
+          <div class="dot" id="dot0"></div>
+          <div class="dot" id="dot1"></div>
+          <div class="dot" id="dot2"></div>
+          <div class="dot" id="dot3"></div>
+          <div class="dot" id="dot4"></div>
+          <div class="dot" id="dot5"></div>
+          <div class="dot" id="dot6"></div>
+          <div class="dot" id="dot7"></div>
+          <div class="dot" id="dot8"></div>
+        </div>
+        <button id="rollButton">Roll Dice</button>
+        <p id="result"></p>
+      </div>
+      
+      <div class="board">
+        <div id="square-100" class="square-even">100</div>
+        <div id="square-99" class="square-odd">99</div>
+        <div id="square-98" class="square-even">98</div>
+        <div id="square-97" class="square-odd">97</div>
+        <div id="square-96" class="square-even">96</div>
+        <div id="square-95" class="square-odd">95</div>
+        <div id="square-94" class="square-even">94</div>
+        <div id="square-93" class="square-odd">93</div>
+        <div id="square-92" class="square-even">92</div>
+        <div id="square-91" class="square-odd">91</div>
+
+        <div id="square-81" class="square-odd">81</div>
+        <div id="square-82" class="square-even">82</div>
+        <div id="square-83" class="square-odd">83</div>
+        <div id="square-84" class="square-even">84</div>
+        <div id="square-85" class="square-odd">85</div>
+        <div id="square-86" class="square-even">86</div>
+        <div id="square-87" class="square-odd">87</div>
+        <div id="square-88" class="square-even">88</div>
+        <div id="square-89" class="square-odd">89</div>
+        <div id="square-90" class="square-even">90</div>
+
+        <div id="square-80" class="square-even">80</div>
+        <div id="square-79" class="square-odd">79</div>
+        <div id="square-78" class="square-even">78</div>
+        <div id="square-77" class="square-odd">77</div>
+        <div id="square-76" class="square-even">76</div>
+        <div id="square-75" class="square-odd">75</div>
+        <div id="square-74" class="square-even">74</div>
+        <div id="square-73" class="square-odd">73</div>
+        <div id="square-72" class="square-even">72</div>
+        <div id="square-71" class="square-odd">71</div>
+
+        <div id="square-61" class="square-odd">61</div>
+        <div id="square-62" class="square-even">62</div>
+        <div id="square-63" class="square-odd">63</div>
+        <div id="square-64" class="square-even">64</div>
+        <div id="square-65" class="square-odd">65</div>
+        <div id="square-66" class="square-even">66</div>
+        <div id="square-67" class="square-odd">67</div>
+        <div id="square-68" class="square-even">68</div>
+        <div id="square-69" class="square-odd">69</div>
+        <div id="square-70" class="square-even">70</div>
+
+        <div id="square-60" class="square-even">60</div>
+        <div id="square-59" class="square-odd">59</div>
+        <div id="square-58" class="square-even">58</div>
+        <div id="square-57" class="square-odd">57</div>
+        <div id="square-56" class="square-even">56</div>
+        <div id="square-55" class="square-odd">55</div>
+        <div id="square-54" class="square-even">54</div>
+        <div id="square-53" class="square-odd">53</div>
+        <div id="square-52" class="square-even">52</div>
+        <div id="square-51" class="square-odd">51</div>
+
+        <div id="square-41" class="square-odd">41</div>
+        <div id="square-42" class="square-even">42</div>
+        <div id="square-43" class="square-odd">43</div>
+        <div id="square-44" class="square-even">44</div>
+        <div id="square-45" class="square-odd">45</div>
+        <div id="square-46" class="square-even">46</div>
+        <div id="square-47" class="square-odd">47</div>
+        <div id="square-48" class="square-even">48</div>
+        <div id="square-49" class="square-odd">49</div>
+        <div id="square-50" class="square-even">50</div>
+
+        <div id="square-40" class="square-even">40</div>
+        <div id="square-39" class="square-odd">39</div>
+        <div id="square-38" class="square-even">38</div>
+        <div id="square-37" class="square-odd">37</div>
+        <div id="square-36" class="square-even">36</div>
+        <div id="square-35" class="square-odd">35</div>
+        <div id="square-34" class="square-even">34</div>
+        <div id="square-33" class="square-odd">33</div>
+        <div id="square-32" class="square-even">32</div>
+        <div id="square-31" class="square-odd">31</div>
+
+        <div id="square-21" class="square-odd">21</div>
+        <div id="square-22" class="square-even">22</div>
+        <div id="square-23" class="square-odd">23</div>
+        <div id="square-24" class="square-even">24</div>
+        <div id="square-25" class="square-odd">25</div>
+        <div id="square-26" class="square-even">26</div>
+        <div id="square-27" class="square-odd">27</div>
+        <div id="square-28" class="square-even">28</div>
+        <div id="square-29" class="square-odd">29</div>
+        <div id="square-30" class="square-even">30</div>
+
+        <div id="square-20" class="square-even">20</div>
+        <div id="square-19" class="square-odd">19</div>
+        <div id="square-18" class="square-even">18</div>
+        <div id="square-17" class="square-odd">17</div>
+        <div id="square-16" class="square-even">16</div>
+        <div id="square-15" class="square-odd">15</div>
+        <div id="square-14" class="square-even">14</div>
+        <div id="square-13" class="square-odd">13</div>
+        <div id="square-12" class="square-even">12</div>
+        <div id="square-11" class="square-odd">11</div>
+
+        <div id="square-1" class="square-odd">1</div>
+        <div id="square-2" class="square-even">2</div>
+        <div id="square-3" class="square-odd">3</div>
+        <div id="square-4" class="square-even">4</div>
+        <div id="square-5" class="square-odd">5</div>
+        <div id="square-6" class="square-even">6</div>
+        <div id="square-7" class="square-odd">7</div>
+        <div id="square-8" class="square-even">8</div>
+        <div id="square-9" class="square-odd">9</div>
+        <div id="square-10" class="square-even">10</div>
+      </div>
+      
+      <div class="players-info">
+        <div class="player" id="player-Donald">
+          <div class="player-token donald"></div>
+          <span>Donald: <span id="donald-position">1</span></span>
+        </div>
+        <div class="player" id="player-Nathan">
+          <div class="player-token nathan"></div>
+          <span>Nathan: <span id="nathan-position">1</span></span>
+        </div>
+        <div class="player" id="player-Justin">
+          <div class="player-token justin"></div>
+          <span>Justin: <span id="justin-position">1</span></span>
+        </div>
+        <div class="player" id="player-Four">
+          <div class="player-token donald"></div>
+          <span>Donald: <span id="donald-position">1</span></span>
+        </div>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>

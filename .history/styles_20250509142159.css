@@ -1,0 +1,276 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+  
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  h1 {
+    color: #292359;
+    margin-bottom: 0;
+  }
+  
+  .game-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  #current-player {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  #player-name.donald {
+    color: white;
+  }
+  
+  #player-name.nathan {
+    color: white;
+  }
+  
+  #player-name.justin {
+    color: white;
+  }
+  
+  .board {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(10, 50px);
+    background-color: black;
+    padding: 10px;
+    border-radius: 8px;
+    gap: 2px;
+    width: fit-content;
+    position: relative;
+  }
+  
+  .square-odd,
+  .square-even {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fffcc4;
+    position: relative;
+  }
+  
+  .square-odd {
+    background-color: #161179;
+  }
+  
+  .square-even {
+    background-color: #292359;
+  }
+  
+  /* Special tiles styling */
+  .ladder-start {
+    background-color: #388e3c; /* Dark green color for ladder start tiles */
+    color: white;
+  }
+  
+  .ladder-end {
+    background-color: #81c784; /* Light green color for ladder end tiles */
+    color: black;
+  }
+  
+  .snake-head {
+    background-color: #d32f2f; /* Dark red color for snake head tiles */
+    color: white;
+  }
+  
+  .snake-tail {
+    background-color: #ef5350; /* Light red color for snake tail tiles */
+    color: black;
+  }
+  
+  /* Dice Styling */
+  .dice {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    padding: 10px;
+    margin: 10px auto;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
+    background: black;
+    border-radius: 50%;
+    align-self: center;
+    justify-self: center;
+    opacity: 0;
+  }
+  
+  .visible {
+    opacity: 1;
+  }
+  
+  #result {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  #rollButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px 0;
+  }
+  
+  #rollButton:hover {
+    background-color: #45a049;
+  }
+  
+  /* Players Styling */
+  .players-info {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+  }
+  
+  .player-token {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+  
+  .donald {
+    background-color: #ff5252;
+  }
+  
+  .nathan {
+    background-color: #4caf50;
+  }
+  
+  .justin {
+    background-color: #2196f3;
+  }
+  
+  /* Player tokens on board */
+  .player-piece {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .player-piece.donald {
+    background-color: #ff5252;
+    top: 5px;
+    left: 5px;
+  }
+  
+  .player-piece.nathan {
+    background-color: #4caf50;
+    top: 5px;
+    right: 5px;
+  }
+  
+  .player-piece.justin {
+    background-color: #2196f3;
+    bottom: 5px;
+    left: 5px;
+  }
+  
+  /* Snakes and Ladders */
+  .snake, .ladder {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  .snake {
+    border-left: 5px solid #d32f2f; /* Red for snakes */
+    border-radius: 5px;
+  }
+  
+  .ladder {
+    border-left: 5px solid #4CAF50; /* Green for ladders */
+    border-radius: 5px;
+  }
+  
+  /* Animation for teleporting */
+  @keyframes teleport {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  .teleporting {
+    animation: teleport 0.6s ease;
+  }
+  
+  /* Legend for special tiles */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 4px;
+  }
+  
+  .ladder-start-color {
+    background-color: #388e3c;
+  }
+  
+  .ladder-end-color {
+    background-color: #81c784;
+  }
+  
+  .snake-head-color {
+    background-color: #d32f2f;
+  }
+  
+  .snake-tail-color {
+    background-color: #ef5350;
+  }

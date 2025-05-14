@@ -1,0 +1,321 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 0;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: 100vh;
+  width: 100vw;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+h1 {
+  color: #292359;
+  margin: 10px 0;
+  font-size: calc(1.5rem + 1vmin);
+}
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#current-player {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#player-name.donald {
+  color: #ff5252;
+}
+
+#player-name.nathan {
+  color: #4caf50;
+}
+
+#player-name.justin {
+  color: #2196f3;
+}
+
+#player-name.four {
+  color: #959510;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(30px, 45px));
+  grid-template-rows: repeat(10, minmax(30px, 45px));
+  background-color: black;
+  padding: 5px;
+  border-radius: 8px;
+  gap: 2px;
+  width: fit-content;
+  position: relative;
+  max-height: calc(100vh - 250px);
+  max-width: calc(100vw - 20px);
+}
+
+.square-odd,
+.square-even {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fffcc4;
+  position: relative;
+  font-size: clamp(0.7rem, 1.5vw, 1rem);
+}
+
+.square-odd {
+  background-color: #161179;
+}
+
+.square-even {
+  background-color: #292359;
+}
+
+/* Special tiles styling */
+.ladder-start {
+  background-color: #388e3c; /* Dark green color for ladder start tiles */
+  color: white;
+}
+
+.ladder-end {
+  background-color: #81c784; /* Light green color for ladder end tiles */
+  color: black;
+}
+
+.snake-head {
+  background-color: #d32f2f; /* Dark red color for snake head tiles */
+  color: white;
+}
+
+.snake-tail {
+  background-color: #ef5350; /* Light red color for snake tail tiles */
+  color: black;
+}
+
+/* Dice Styling */
+.dice {
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  padding: 8px;
+  margin: 8px auto;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: black;
+  border-radius: 50%;
+  align-self: center;
+  justify-self: center;
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
+#result {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 8px 0;
+  height: 20px;
+  text-align: center;
+}
+
+#rollButton {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px 0;
+}
+
+#rollButton:hover {
+  background-color: #45a049;
+}
+
+/* Players Styling */
+.players-info {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin: 5px 10px;
+}
+
+.player-token {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.donald {
+  background-color: #ff5252;
+}
+
+.nathan {
+  background-color: #4caf50;
+}
+
+.justin {
+  background-color: #2196f3;
+}
+
+.four {
+  background-color: #959510;
+}
+
+/* Player tokens on board */
+.player-piece {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.player-piece.donald {
+  background-color: #ff5252;
+  top: 3px;
+  left: 3px;
+}
+
+.player-piece.nathan {
+  background-color: #4caf50;
+  top: 3px;
+  right: 3px;
+}
+
+.player-piece.justin {
+  background-color: #2196f3;
+  bottom: 3px;
+  left: 3px;
+}
+
+.player-piece.four {
+  background-color: #959510;
+  bottom: 3px;
+  right: 3px;
+}
+
+/* Snakes and Ladders */
+.snake, .ladder {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.snake {
+  border-left: 4px solid #d32f2f; /* Red for snakes */
+  border-radius: 3px;
+}
+
+.ladder {
+  border-left: 4px solid #4CAF50; /* Green for ladders */
+  border-radius: 3px;
+}
+
+/* Animation for teleporting */
+@keyframes teleport {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.teleporting {
+  animation: teleport 0.6s ease;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-height: 800px) {
+  .board {
+    grid-template-columns: repeat(10, minmax(25px, 35px));
+    grid-template-rows: repeat(10, minmax(25px, 35px));
+    padding: 3px;
+    gap: 1px;
+  }
+  
+  h1 {
+    font-size: calc(1.2rem + 1vmin);
+    margin: 5px 0;
+  }
+  
+  .dice {
+    width: 40px;
+    height: 40px;
+    padding: 6px;
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .player {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .board {
+    grid-template-columns: repeat(10, minmax(20px, 30px));
+    grid-template-rows: repeat(10, minmax(20px, 30px));
+    padding: 2px;
+    gap: 1px;
+  }
+  
+  .square-odd,
+  .square-even {
+    font-size: 0.6rem;
+  }
+  
+  .player-piece {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .player-token {
+    width: 12px;
+    height: 12px;
+  }
+}
